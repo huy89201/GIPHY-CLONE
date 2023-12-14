@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  env: {
+    GIPHY_API_KEY: "rJLTbsZaG1XIpkj8Qk1KcQTUV7oSQ1aU",
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
