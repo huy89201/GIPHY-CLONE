@@ -10,7 +10,10 @@ import {
   SearchContextManager,
   SearchContext,
 } from "@giphy/react-components";
+
 import ResizeObserver from "react-resize-observer";
+import GifModel from "./components/GifModel";
+
 
 const temp: any = {
   type: "gif",
@@ -223,7 +226,7 @@ const temp: any = {
     "e=Z2lmX2lkPWFJUWtCN09iT283MkNGdnhiQiZldmVudF90eXBlPUdJRl9UUkVORElORyZjaWQ9MmU5MDRkOWRveDNoNDE4Y3M3cTZhZWltcXkybmhqMWVkNXd1ZWxmeW5nOGVrcWVpJmN0PWc",
   analytics: {
     onload: {
-      url: "https://giphy-analytics.giphy.com/v2/pingback_simple?analytics_response_payload=e%3DZ2lmX2lkPWFJUWtCN09iT283MkNGdnhiQiZldmVudF90eXBlPUdJRl9UUkVORElORyZjaWQ9MmU5MDRkOWRveDNoNDE4Y3M3cTZhZWltcXkybmhqMWVkNXd1ZWxmeW5nOGVrcWVpJmN0PWc&action_type=SEEN",
+      url: "  ad=e%3DZ2lmX2lkPWFJUWtCN09iT283MkNGdnhiQiZldmVudF90eXBlPUdJRl9UUkVORElORyZjaWQ9MmU5MDRkOWRveDNoNDE4Y3M3cTZhZWltcXkybmhqMWVkNXd1ZWxmeW5nOGVrcWVpJmN0PWc&action_type=SEEN",
     },
     onclick: {
       url: "https://giphy-analytics.giphy.com/v2/pingback_simple?analytics_response_payload=e%3DZ2lmX2lkPWFJUWtCN09iT283MkNGdnhiQiZldmVudF90eXBlPUdJRl9UUkVORElORyZjaWQ9MmU5MDRkOWRveDNoNDE4Y3M3cTZhZWltcXkybmhqMWVkNXd1ZWxmeW5nOGVrcWVpJmN0PWc&action_type=CLICK",
@@ -242,43 +245,6 @@ const temp: any = {
   is_realtime: false,
   is_removed: false,
   is_dynamic: false,
-};
-
-const giphyFetch = new GiphyFetch("sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh");
-
-type TGifModelProps = {
-  setModalGif: any;
-  modalGif: any;
-};
-
-const GifModel = ({ setModalGif, modalGif }: TGifModelProps) => {
-  useEffect(() => {
-    const res = giphyFetch.gif(modalGif.id);
-    console.log(res);
-  }, [modalGif]);
-
-  return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "rgba(0, 0, 0, .8)",
-      }}
-      onClick={(e) => {
-        e.preventDefault();
-        setModalGif(undefined);
-      }}
-    >
-      <Gif gif={modalGif} width={400} />
-      <h1>this is my text</h1>
-    </div>
-  );
 };
 
 const Components = () => {

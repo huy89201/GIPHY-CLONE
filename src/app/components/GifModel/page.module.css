@@ -1,0 +1,59 @@
+.modelWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modelRightContent {
+  /* background-color: red; */
+  padding: 6px 12px;
+  height: 400px;
+  width: 300px;
+}
+
+.headers {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.datePost {
+  color: #a6a6a6;
+  font-family: interface, Helvetica Neue, helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.user {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.userDisplayName {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.userUserName {
+  display: flex;
+  align-items: center;
+}
+
+.userVerifyIcon {
+  width: 14px;
+  height: 14px;
+  color: rgb(21, 205, 255);
+  margin-left: 4px;
+}
