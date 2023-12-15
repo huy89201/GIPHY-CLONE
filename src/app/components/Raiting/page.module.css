@@ -1,0 +1,35 @@
+.ratingWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  padding: 10;
+}
+
+.ratingContent {
+  background-color: #fff;
+  border-radius: 4px;
+  width: 70px;
+  height: 70px;
+  color: black;
+  text-align: center;
+  font-weight: 900;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ratingType {
+  font-size: 24px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  line-height: 18px;
+}
+
+.ratingLevel {
+  font-size: 12px;
+}

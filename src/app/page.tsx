@@ -14,7 +14,6 @@ import {
 import ResizeObserver from "react-resize-observer";
 import GifModel from "./components/GifModel";
 
-
 const temp: any = {
   type: "gif",
   id: "aIQkB7ObOo72CFvxbB",
@@ -249,14 +248,12 @@ const temp: any = {
 
 const Components = () => {
   const { fetchGifs, searchKey } = useContext(SearchContext);
-  const [gif, setGif] = useState<IGif | null>(null);
-  const [modalGif, setModalGif] = useState(temp);
+  const [modalGif, setModalGif] = useState();
   const [width, setWidth] = useState(1920);
 
-  // giphyFetch.gif(modalGif.id)
   return (
     <>
-      {/* <SearchBar />
+      <SearchBar />
       <br />
       <Grid
         key={searchKey}
@@ -274,7 +271,7 @@ const Components = () => {
         onResize={({ width }) => {
           setWidth(width);
         }}
-      /> */}
+      />
       {modalGif && <GifModel modalGif={modalGif} setModalGif={setModalGif} />}
     </>
   );
@@ -283,9 +280,9 @@ const Components = () => {
 export default function Home() {
   return (
     <main className={styles.main}>
-      {/* <SearchContextManager apiKey={process.env.GIPHY_API_KEY!}> */}
-      <Components />
-      {/* </SearchContextManager> */}
+      <SearchContextManager apiKey={process.env.GIPHY_API_KEY!}>
+        <Components />
+      </SearchContextManager>
     </main>
   );
 }

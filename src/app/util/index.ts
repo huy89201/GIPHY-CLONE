@@ -1,0 +1,1 @@
+import { RATING } from "./rating";
