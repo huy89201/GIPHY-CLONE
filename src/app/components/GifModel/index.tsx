@@ -6,7 +6,20 @@ import Link from "next/link";
 import { MdVerified } from "react-icons/md";
 import moment from "moment";
 import Rating from "../Raiting";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FaLink } from "react-icons/fa6";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  RedditShareButton,
+  RedditIcon,
+} from "react-share";
 
 type TGifModelProps = {
   setModalGif: any;
@@ -14,29 +27,29 @@ type TGifModelProps = {
 };
 
 export default function GifModel({ setModalGif, modalGif }: TGifModelProps) {
-  const [views, setViews] = useState<number>();
+  const modelRef = useRef<HTMLDivElement>(null);
+  const [isClickCopy, setIsClickCopy] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getViewsCount = async () => {
-      const res = await fetch(
-        `https://giphy.com/api/v1/proxy-gif/${modalGif.id}/view-count/`
-      ).then((res) => res.json());
+  const handleOutsideClick = (e: any) => {
+    e.preventDefault();
 
-      setViews(res.viewCount);
-    };
+    if (modelRef.current && !modelRef.current.contains(e.target)) {
+      setModalGif(undefined);
+    }
+  };
 
-    getViewsCount();
-  }, [modalGif.id]);
+  const handleCopiedLink = () => {
+    if (isClickCopy) return;
+
+    setIsClickCopy(true);
+    navigator.clipboard.writeText(modalGif.url);
+
+    setTimeout(() => setIsClickCopy(false), 500);
+  };
 
   return (
-    <div
-      className={styles.modelWrapper}
-      onClick={(e) => {
-        e.preventDefault();
-        setModalGif(undefined);
-      }}
-    >
-      <div className={styles.modelContainer}>
+    <div className={styles.modelWrapper} onClick={handleOutsideClick}>
+      <div className={styles.modelContainer} ref={modelRef}>
         <Gif
           gif={modalGif}
           width={350}
@@ -53,7 +66,7 @@ export default function GifModel({ setModalGif, modalGif }: TGifModelProps) {
                   alt=""
                   width={0}
                   height={50}
-                  style={{ width: "100%" }}
+                  style={{ width: "100%", objectFit: "cover" }}
                 />
                 <br />
               </>
@@ -89,12 +102,43 @@ export default function GifModel({ setModalGif, modalGif }: TGifModelProps) {
           </div>
           <div className={styles.bottom}>
             <Rating rating={modalGif.rating} />
-
-            {views && (
-              <div className={styles.modelGifViews}>
-                {views.toLocaleString("en-US")} views
+            <div className={styles.modelGifShare}>
+              <div>Share on</div>
+              <div className={styles.modelGifShareGr}>
+                <FacebookShareButton url={modalGif.url}>
+                  <FacebookIcon className={styles.modelGifShareIcon} />
+                </FacebookShareButton>
+                <TwitterShareButton url={modalGif.url}>
+                  <TwitterIcon className={styles.modelGifShareIcon} />
+                </TwitterShareButton>
+                <TelegramShareButton url={modalGif.url}>
+                  <TelegramIcon className={styles.modelGifShareIcon} />
+                </TelegramShareButton>
+                <PinterestShareButton url={modalGif.url} media={modalGif.url}>
+                  <PinterestIcon className={styles.modelGifShareIcon} />
+                </PinterestShareButton>
+                <RedditShareButton url={modalGif.url}>
+                  <RedditIcon className={styles.modelGifShareIcon} />
+                </RedditShareButton>
               </div>
-            )}
+              <button
+                className={
+                  isClickCopy
+                    ? styles.modelGifShareLinkBtnIsClicked
+                    : styles.modelGifShareLinkBtn
+                }
+                onClick={handleCopiedLink}
+              >
+                {isClickCopy ? (
+                  "Copied"
+                ) : (
+                  <>
+                    <FaLink className={styles.modelGifShareLinkIcon} />
+                    Copy GIF Link
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
