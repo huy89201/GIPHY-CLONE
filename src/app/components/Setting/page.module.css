@@ -1,0 +1,85 @@
+.settingWrapper {
+  text-align: right;
+}
+
+.settingButton {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 900;
+  gap: 10px;
+
+  width: fit-content;
+  background-color: transparent;
+}
+
+.settingIcon {
+  color: #6157ff;
+  width: 30px;
+  height: 30px;
+}
+
+.modelWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modelForm {
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  background: rgba(0, 0, 0, 1);
+  padding: 1.125rem;
+  border-radius: 4px;
+  flex-direction: column;
+}
+
+.modelFields {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.modelLabel {
+  font-size: 18px;
+  font-weight: 700;
+  color: #a6a6a6;
+}
+
+.modelInput {
+  width: 100%;
+}
+
+.modelErrors {
+  text-align: left;
+  font-size: 14px;
+
+  background: -webkit-linear-gradient(
+    45deg,
+    rgb(230, 70, 182) 0%,
+    rgb(255, 102, 102) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* label {
+  color: #a6a6a6;
+} */
+
+.modelSaveBtn {
+  background: linear-gradient(45deg, rgb(153, 51, 255), rgb(97, 87, 255));
+}
