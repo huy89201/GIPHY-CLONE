@@ -70,7 +70,7 @@ export default function SettingModel({ SetIsOpenModel }: TSettingModelProps) {
           {!API_KEY && (
             <>
               <div className={styles.modelLabel}>
-                Sample key: rJLTbsZaG1XIpkj8Qk1KcQTUV7oSQ1aU
+                Sample key: {process.env.GIPHY_API_KEY}
               </div>
               <br />
             </>

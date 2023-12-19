@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { IoIosSettings } from "react-icons/io";
 import SettingModel from "../SettingModel";
 import { motion, AnimatePresence } from "framer-motion";
