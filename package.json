@@ -12,6 +12,7 @@
     "@giphy/js-fetch-api": "^5.2.0",
     "@giphy/react-components": "^9.2.3",
     "@hookform/resolvers": "^3.3.2",
+    "framer-motion": "^10.16.16",
     "moment": "^2.29.4",
     "next": "14.0.4",
     "react": "^18",

@@ -13,6 +13,7 @@ import ResizeObserver from "react-resize-observer";
 import GifModel from "./components/GifModel";
 import Setting from "./components/Setting";
 import { useGloContext } from "./context/gloContext";
+import { AnimatePresence } from "framer-motion";
 
 const Components = () => {
   const { fetchGifs, searchKey } = useContext(SearchContext);
@@ -31,7 +32,6 @@ const Components = () => {
         width={width}
         fetchGifs={fetchGifs}
         onGifClick={(gif, e) => {
-          console.log("gif", gif);
           e.preventDefault();
           setModalGif(gif as any);
         }}
@@ -41,7 +41,9 @@ const Components = () => {
           setWidth(width);
         }}
       />
-      {modalGif && <GifModel modalGif={modalGif} setModalGif={setModalGif} />}
+      <AnimatePresence initial={false} onExitComplete={() => null} mode="wait">
+        {modalGif && <GifModel modalGif={modalGif} setModalGif={setModalGif} />}
+      </AnimatePresence>
     </>
   );
 };

@@ -6,8 +6,10 @@ import Link from "next/link";
 import { MdVerified } from "react-icons/md";
 import moment from "moment";
 import Rating from "../Raiting";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FaLink } from "react-icons/fa6";
+import { motion } from "framer-motion";
+import { VARIANTS } from "@/app/util/animate";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -48,8 +50,22 @@ export default function GifModel({ setModalGif, modalGif }: TGifModelProps) {
   };
 
   return (
-    <div className={styles.modelWrapper} onClick={handleOutsideClick}>
-      <div className={styles.modelContainer} ref={modelRef}>
+    <motion.div
+      className={styles.modelWrapper}
+      onClick={handleOutsideClick}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className={styles.modelContainer}
+        ref={modelRef}
+        onClick={(e) => e.stopPropagation()}
+        variants={VARIANTS.DROP_IN}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
         <Gif
           gif={modalGif}
           width={350}
@@ -141,7 +157,7 @@ export default function GifModel({ setModalGif, modalGif }: TGifModelProps) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
